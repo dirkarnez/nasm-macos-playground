@@ -31,6 +31,8 @@ jobs:
       
       - run: ld -arch x86_64 -o main -e _start main.o -macosx_version_min 10.15 -static
 
+      - run: ls && ./main
+      
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:

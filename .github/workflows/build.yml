@@ -29,8 +29,7 @@ jobs:
       
       - run: nasm -f macho64 main.asm
       
-      # "-macosx_version_min" "10.9.0"
-      - run: ld main.o "-dynamic" "-arch" "x86_64" -lSystem -o main -e _start
+      - run: ld -arch x86_64 -o main -e _start main.o -macosx_version_min 10.15 -static
 
       - name: Archive Release
         uses: thedoctor0/zip-release@master

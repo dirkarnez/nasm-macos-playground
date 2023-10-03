@@ -2,6 +2,7 @@ section .data
     hello db 'Hello, World!', 0
 
 section .text
+    align 16 ; Set the alignment to 16 bytes
     global _start
 
 _start:

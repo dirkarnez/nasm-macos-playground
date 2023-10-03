@@ -22,6 +22,9 @@ jobs:
       - run: ls
         working-directory: /Library/Developer/CommandLineTools/SDKs/
         
+      - run: ls
+        working-directory: /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib
+        
       - run: brew install nasm
 
       - run: nasm -v
@@ -32,7 +35,7 @@ jobs:
       
       - run: nasm -f macho64 main.asm
       
-      - run: ld -arch x86_64 -o main -e _start main.o -macosx_version_min 10.15
+      - run: ld -arch x86_64 -o main -e _start main.o -dynamic -L/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib -lSystem
 
       - run: ls && ./main
       

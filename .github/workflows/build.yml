@@ -35,7 +35,7 @@ jobs:
       
       - run: nasm -f macho64 main.asm
 
-      - run: ld -e _main -arch x86_64 -dynamic -L/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib -lSystem -o main main.o
+      - run: ld -e _main -arch x86_64 -dynamic -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem -o main main.o
 
       - run: ls && ./main
       

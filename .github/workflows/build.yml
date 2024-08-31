@@ -38,7 +38,8 @@ jobs:
       - run: nasm -f macho64 main.asm
 
       # macosx_version_min is deprecated
-      - run: ld -e _main -arch x86_64 -macos_version_min 13.3 -dynamic -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem -o main main.o
+      # -dynamic -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
+      - run: ld -e _main -arch x86_64 -macos_version_min 13.3 -lSystem -o main main.o
       
       - run: ls && ./main
       

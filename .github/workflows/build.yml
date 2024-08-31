@@ -19,11 +19,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - run: ls
+      - run: ls -R
         working-directory: /Library/Developer/CommandLineTools/SDKs/
         
-      - run: ls
-        working-directory: /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib
+      # - run: ls
+      #   working-directory: /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib
         
       - run: brew install nasm
 

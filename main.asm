@@ -1,7 +1,7 @@
 global _main
 
 section .text
-
+align 16  ; Ensure proper alignment
 _main:
     ; amd64abi args passed on rdi, rsi, rdx, r10, r8 and r9
     ; syscall)

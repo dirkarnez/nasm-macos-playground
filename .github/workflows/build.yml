@@ -12,8 +12,10 @@ jobs:
     # The type of runner that the job will run on
     runs-on: macos-latest-large
     env:
+      INPUT_INCLUDE-HIDDEN-FILES: true
+      INPUT_NAME: files
+      INPUT_OVERWRITE: true
       targetZip: nasm-macos-playground-${{ github.ref_name }}.zip
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -34,6 +36,29 @@ jobs:
       - run: brew install binutils
 
       - run: ld -v
+
+
+      - uses: actions/checkout@v4
+        with:
+          repository: actions/upload-artifact
+          ref: v4.5.0
+          path: upload-artifact
+          submodules: true
+  
+      - working-directory: upload-artifact
+        run: npm i
+          
+      - uses: fastai/workflows/ssh@master
+        with:
+          ssh_key: ${{ secrets.SSH_KEY }}
+          key_file: id_ecdsa
+          
+  #     - uses: actions/checkout@v2
+  #     - run: source script-linux.sh
+  
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@master
+      
       
       - run: nasm -f macho64 main.asm
 

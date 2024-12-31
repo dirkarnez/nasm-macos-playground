@@ -1,10 +1,15 @@
-name: cpp-cmake-mingw-prebuilt-release-actions-workflow
-on:
+name: macos
+on: 
+  workflow_dispatch:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
       - 'c*'
+      
+defaults:
+  run:
+    shell: bash
 
 jobs:
   # This workflow contains a single job called "build"

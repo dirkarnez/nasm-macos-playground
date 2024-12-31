@@ -1,7 +1,7 @@
 global _main
 
 section .text
-align 16  ; Ensure proper alignment
+    align 16  ; Ensure proper alignment
 _main:
     ; amd64abi args passed on rdi, rsi, rdx, r10, r8 and r9
     ; syscall)
@@ -19,7 +19,7 @@ _main:
     syscall
 
 section .data
-align 16
+    align 16
 
 hello_world: db "Hello World!", 10
 .len: equ $ - hello_world

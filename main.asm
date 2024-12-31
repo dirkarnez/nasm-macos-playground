@@ -19,6 +19,7 @@ _main:
     syscall
 
 section .data
+align 16
 
 hello_world: db "Hello World!", 10
 .len: equ $ - hello_world
